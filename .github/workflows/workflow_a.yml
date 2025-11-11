@@ -18,7 +18,7 @@ jobs:
 
   chamar-b:
     needs: gerar-dados
-    uses: ./.github/workflows/workflow-b.yml
+    uses: ./.github/workflows/workflow_b.yml
     with:
       parametro1: ${{ needs.gerar-dados.outputs.input_calculado }}
       parametro2: 'valor-fixo'
