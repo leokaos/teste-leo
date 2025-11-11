@@ -1,0 +1,24 @@
+name: Workflow A
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  gerar-dados:
+    runs-on: ubuntu-latest
+    outputs:
+      input_calculado: ${{ steps.calcular.outputs.resultado }}
+    steps:
+      - name: Calcular valor
+        id: calcular
+        run: |
+          RESULTADO="valor-calculado-$(date +%Y%m%d)"
+          echo "resultado=$RESULTADO" >> $GITHUB_OUTPUT
+
+  chamar-b:
+    needs: gerar-dados
+    uses: ./.github/workflows/workflow-b.yml
+    with:
+      parametro1: ${{ needs.gerar-dados.outputs.input_calculado }}
+      parametro2: 'valor-fixo'

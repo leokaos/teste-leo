@@ -1,0 +1,21 @@
+name: Reusable Workflow B
+
+on:
+  workflow_call:
+    inputs:
+      parametro1:
+        required: true
+        type: string
+      parametro2:
+        required: false
+        type: string
+        default: 'default'
+
+jobs:
+  processar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Executar com inputs
+        run: |
+          echo "Parametro 1: ${{ inputs.parametro1 }}"
+          echo "Parametro 2: ${{ inputs.parametro2 }}"
