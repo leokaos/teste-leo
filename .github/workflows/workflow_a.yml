@@ -14,6 +14,7 @@ jobs:
         id: calcular
         run: |
           RESULTADO="valor-calculado-$(date +%Y%m%d)"
+          echo "$RESULTADO"
           echo "resultado=$RESULTADO" >> $GITHUB_OUTPUT
 
   chamar-b:
